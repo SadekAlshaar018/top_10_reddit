@@ -54,7 +54,10 @@ export default class Post extends Component {
                       </div>
                       <div className="post__item-description">
                       <h3 className="post_title main-color title">Public description</h3>
-                      <span className="lightblue">{item.data.public_description}</span>
+                      {
+                        item.data.all_awardings[0].description.length > 0 ? 
+                        <span className="lightblue">{item.data.all_awardings[0].description}</span>: ''
+                      }
                       </div>
                       <div className="post__item-score main-color">
                         <h3 className="post_title title">Subscriber count</h3>
