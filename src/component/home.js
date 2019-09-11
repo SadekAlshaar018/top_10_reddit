@@ -51,25 +51,24 @@ export default class Home extends Component {
     console.log(temp.sort(sortArray), 'sortArray');
 
     return (
-      <div className="container">
-        <div className="content">
-          <div className="content_head">
-            <h1 className="content-head_h1 main-color">Home</h1>
-            <h3 className="content-head_h3 secondery-color">Top 10 posts</h3>
+        <div className="block">
+          <div className="block__head">
+            <h1 className="block__head-title main-color">Home</h1>
+            <h3 className="block_head-subtitle secondery-color">Top 10 posts</h3>
           </div>
-          <div className="content-posts">
+          <div className="block__posts">
             {
               this.state.data ? <div className="main-list">
                 <ul className="main-list_list">{temp.sort(sortArray).map( (item, id ) =>
                   <li className="list-item" key={item.id}>
                     <Link to={`www.reddit.com/${item.permalink}`}>
-                      <h3 className="list-item_title main-color">{item.title}</h3>
+                      <h3 className="list-item_title main-color title">{item.title}</h3>
                     </Link>
-                    <div className="list-item_score secondery-color">
+                    <div className="list-item_score">
                       <Link to={`post/${item.id}`}>
                         <span className="list-item_score-prefixed">{item.subreddit_name_prefixed}</span>
                       </Link>
-                      <span className="list-item_score-score">{item.score}</span>
+                      <span className="list-item_score-score secondery-color">{item.score}</span>
                     </div>
                   </li>
                   )}</ul>
@@ -77,7 +76,6 @@ export default class Home extends Component {
             }
           </div>
         </div>
-      </div>
     )
   }
 }

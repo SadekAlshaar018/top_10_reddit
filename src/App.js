@@ -6,13 +6,15 @@ import Post from './component/post';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route  path='/home' component={Home} />
-          <Route  path='/post/:id' component={Post} />
-        </Switch>
-      </Router>
+    <div className="container">
+      <div className="content">
+        <Router>
+          <Switch>
+            <Route  path='/home' component={Home} />
+            <Route  path='/post/:id' component={Post} />
+          </Switch>
+        </Router>
+      </div>  
     </div>
   );
 }

@@ -3,60 +3,156 @@ html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
   html,body {
     font-family: 'Inter var', sans-serif;
+    letter-spacing: -0.18px;
   }
 }
-h3,h1{
-  letter-spacing: -0.18px;
-  font-family: 'Inter var', sans-serif;
+body{
+  height: 100vh;
 }
+/* color's  */
 .main-color{
   color: #263D52;
 }
 .secondery-color{
   color: #8A95A5;
 }
-ul{
-  list-style-type: none;
-  padding: 0;
+/* gloable css class's */
+.bold {
+  font-weight: 900;
+}
+.title{
+  font-weight: 600;
+}
+.lightblue{
+  color: #25496E;
 }
 a{
   text-decoration: none;
 }
+
+
+#root{
+  background: #F8F9FA;
+  padding: 1px;
+  height: 100%;
+}
 .container{
   max-width: 1152px;
   width: 100%;
+  height: 100%;
   margin: 0 auto;
-  background: #F8F9FA;
 }
+
 .content{
   max-width: 688px;
   width: 100%;
+  height: 100%;
   margin: 0 auto;
 }
-.content_head{
-  text-align: left;
+.block{
+  display: block;
+}
+
+.block__head-title{
+  margin-bottom: 0;
+  font-weight: 900;
+  font-family: 'Inter var', sans-serif;
+  letter-spacing: -0.18px;
+}
+.block_head-subtitle{
+  margin-top: 0;
+}
+.block__posts{
+  display: block;
+}
+.main-list_list{
+  list-style-type: none;
+  padding: 0;
 }
 .list-item{
-  margin: 20px 0;
-  padding: 10px;
-  border: 1px solid #fff;
+  margin: 24px 0;
+  padding: 30px 25px;
+  border: 1px solid #E2E7EB;
   background: #ffffff;
   box-shadow: 0px 0px 0px 1px #3600000a;
 }
-
+.list-item_title{
+  margin-top: 0;
+  margin-bottom: 10px;
+}
 .list-item_score-prefixed{
   margin-right: 20px;
-  font-weight: 600;
+  font-weight: 700;
   color: #4583C2;
+  position: relative;
+}
+.list-item_score-score{
+  position: relative;
+}
+.list-item_score-score::before{
+  content: ".";
+  position: absolute;
+  top: -9px;
+  left: -10px;
+  font-size: 22px;
+  font-weight: 500;
 }
 .list-item_score-score::after{
   content: ' points';
 }
+
+.content_head{
+  text-align: left;
+}
+
+.post__page{
+  display: block;
+}
+
+.post__page-inner a{
+  position: relative;
+}
+.post__page-inner a::after{
+  content: "Home";
+  position: absolute;
+  position: absolute;
+  left: 20px;
+  color: #4583C2;
+  font-weight: 700;
+}
+.post__page-main__post{
+  display: block;
+}
+
+.post__item{
+  display: flex;
+  flex-direction: column;
+}
+.post__item > div{
+  margin-bottom: 30px;
+}
+.post__item-details h1{
+  margin-bottom: 10px;
+}
+.post__item-details .subdetails{
+  font-weight: 700;
+}
+.post__item-title .title{
+  margin-bottom: 10px;
+}
+.post-item{
+  display: block;
+}
+
 @media only screen and (max-width: 767px) {
+  .container{
+    padding: 0 20px;
+    width: auto;
+  }
   .content{
     max-width: 355px;
     width: 100%;
     margin: 0 auto;
-    background: #F8F9FA;
+    /* background: #F8F9FA; */
   }
 }

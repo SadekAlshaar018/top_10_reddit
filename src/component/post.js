@@ -29,31 +29,42 @@ export default class Post extends Component {
   render() {
     const { params } = this.props.match
     // console.log(this.props.match);
+    const  formatNum = (num) => {
+      return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    }
     return (
-      <div className="post-page">
-        <div className="container">
-          <div className="inner">
-            <Link to={`/home`}>
-              <img src={Back} alt="" />
-            </Link>
-          </div>
-          <div className="content">
+      <div className="post__page">
+            <div className="post__page-inner">
+              <Link to={`/home`}>
+                <img src={Back} alt="" />
+              </Link>
+            </div>
             {
-              this.state.data ? <div className="main-list">
-                <ul className="main-list_list">{this.state.data.map( (item, id ) =>
-                  params.id === item.data.id ? <li className="list-item" key={item.data.id}>
-                      <h3 className="list-item_title main-color">{item.data.title}</h3>
-                    <div className="list-item_score secondery-color">
-                      <span className="list-item_score-prefixed">{item.data.subreddit_name_prefixed}</span>
-                      <span className="list-item_score-score">{item.data.score}</span>
-                    </div>
-                  </li> : ''
-                  )}</ul>
+              this.state.data ? <div className="post__page-main__post">
+
+                <div className="main-post_list">{this.state.data.map( (item, id ) =>
+                  params.id === item.data.id ? <div className="post__item" key={item.data.id}>
+                      <div className="post__item-details">
+                        <h1 className="main-color bold">{item.data.subreddit_name_prefixed}</h1>
+                        <span className="subdetails secondery-color">Subreddit details</span>
+                      </div>
+                      <div className="post__item-title">
+                        <h3 className="post_title main-color title">Title</h3>
+                        <span className="lightblue">{item.data.title}</span>
+                      </div>
+                      <div className="post__item-description">
+                      <h3 className="post_title main-color title">Public description</h3>
+                      <span className="lightblue">{item.data.public_description}</span>
+                      </div>
+                      <div className="post__item-score main-color">
+                        <h3 className="post_title title">Subscriber count</h3>
+                        <span className="post_score-score lightblue">{formatNum(item.data.subreddit_subscribers)}</span>
+                      </div>
+                  </div> : ''
+                )}</div>
               </div> : ``
             }
           </div>
-        </div>
-      </div>
     )
   }
 }
