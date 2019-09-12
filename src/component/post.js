@@ -55,7 +55,7 @@ export default class Post extends Component {
                       <div className="post__item-description">
                       <h3 className="post_title main-color title">Public description</h3>
                       {
-                        item.data.all_awardings[0].description.length > 0 ? 
+                        item.data.all_awardings[0].description.length > 0 ?
                         <span className="lightblue">{item.data.all_awardings[0].description}</span>: ''
                       }
                       </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Home from './component/home';
-import Post from './component/post';
+import Home from './component/Home';
+import Post from './component/Post';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
             <Route  path='/post/:id' component={Post} />
           </Switch>
         </Router>
-      </div>  
+      </div>
     </div>
   );
 }

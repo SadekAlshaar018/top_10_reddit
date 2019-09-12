@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -10,19 +11,23 @@ export default class Home extends Component {
   }
   componentDidMount () {
     const url = 'https://www.reddit.com/best.json?limit=10';
-    fetch(url)
-      .then( data => {
-        return data.json();
-      })
-      .then( data => {
-        // console.log(data);
-        this.setState({
-          data: data.data.children
+    setTimeout(() => {
+      fetch(url)
+        .then( data => {
+          return data.json();
         })
-      })
-      .catch( err => {
-        console.log(err);
-      })
+        .then( data => {
+          // console.log(data);
+          this.setState({
+            data: data.data.children
+          })
+        })
+        .catch( err => {
+          console.log(err);
+        })
+    },
+  12100000)
+
   }
   render () {
     //our data befor sort
@@ -58,10 +63,10 @@ export default class Home extends Component {
           </div>
           <div className="block__posts">
             {
-              this.state.data ? <div className="main-list">
+              this.state.data.length > 0 ? <div className="main-list">
                 <ul className="main-list_list">{temp.sort(sortArray).map( (item, id ) =>
                   <li className="list-item" key={item.id}>
-                    <Link to={`www.reddit.com/${item.permalink}`}>
+                    <Link to={`https://www.reddit.com/${item.permalink}`}>
                       <h3 className="list-item_title main-color title">{item.title}</h3>
                     </Link>
                     <div className="list-item_score">
@@ -72,7 +77,7 @@ export default class Home extends Component {
                     </div>
                   </li>
                   )}</ul>
-              </div> : ``
+              </div> : <div className="spinner"><div className="lds-ripple"><div></div><div></div><div></div><div></div></div></div>
             }
           </div>
         </div>
